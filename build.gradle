@@ -24,19 +24,25 @@ dependencies {
 // Antlr
 generateGrammarSource {
     maxHeapSize = "64m"
-    arguments += ["-visitor", "-long-messages"]
-    outputDirectory = file("${rootDir}/src/generated/java")
+    arguments += [ "-visitor", 
+                   "-long-messages",
+                   '-package', 'example.antlr']
+}
+compileJava.dependsOn generateGrammarSource
+
+sourceSets {
+    generated {
+        java.srcDir "${buildDir}/generated-src/antlr/main/"
+    }
+}
+compileJava.source sourceSets.generated.java, sourceSets.main.java
+
+clean{
+    delete file("${buildDir}/generated-src/")
 }
 
-// Cleanup
-clean {
-    delete file("src/generated/")
-}
-
-// Intellij
 idea {
     module {
-        sourceDirs += file("src/generated/java")
-        generatedSourceDirs += file("src/generated/java")
+        sourceDirs += file("${buildDir}/generated-src/antlr/main/")
     }
 }
