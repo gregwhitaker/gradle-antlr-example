@@ -35,6 +35,16 @@ clean {
     delete file("${projectDir}/src/generated")
 }
 
+sourceSets {
+    generated{
+        java.srcDir "${projectDir}/src/generated/java/"
+    }
+
+    main {
+        java.srcDirs += "${projectDir}/src/generated/java/"
+    }
+}
+
 // Intellij
 idea {
     module {

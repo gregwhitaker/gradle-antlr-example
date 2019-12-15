@@ -10,6 +10,6 @@ public class Main {
     public static void main(String... args) {
         LOG.info("Running the example...");
 
-        ExprLexer lexer = new ExprLexer(CharStreams.fromString("100+2*6");
+        ExprLexer lexer = new ExprLexer(CharStreams.fromString("100+2*6"));
     }
 }
