@@ -27,7 +27,7 @@ generateGrammarSource {
     maxHeapSize = "64m"
     arguments += [ "-visitor", 
                    "-long-messages",
-                   '-package', 'example.antlr']
+                   "-package", "example.antlr" ]
     outputDirectory = file("${projectDir}/src/generated/java")
 }
 
