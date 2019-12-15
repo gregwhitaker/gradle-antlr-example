@@ -27,22 +27,17 @@ generateGrammarSource {
     arguments += [ "-visitor", 
                    "-long-messages",
                    '-package', 'example.antlr']
-}
-compileJava.dependsOn generateGrammarSource
-
-sourceSets {
-    generated {
-        java.srcDir "${buildDir}/generated-src/antlr/main/"
-    }
-}
-compileJava.source sourceSets.generated.java, sourceSets.main.java
-
-clean{
-    delete file("${buildDir}/generated-src/")
+    outputDirectory = file("${projectDir}/src/generated/java")
 }
 
+clean {
+    delete file("${projectDir}/src/generated")
+}
+
+// Intellij
 idea {
     module {
-        sourceDirs += file("${buildDir}/generated-src/antlr/main/")
+        sourceDirs += file("${projectDir}/src/generated/java")
+        generatedSourceDirs += file("${projectDir}/src/generated/java")
     }
 }
