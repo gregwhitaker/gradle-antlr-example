@@ -5,6 +5,24 @@ An example of using ANTLR to generate a Parser and Lexer using Gradle.
 Run the following command to build the example:
 
     ./gradlew clean build
+    
+## Running the Example
+Run the following command to start the example:
+
+    ./gradlew run
+    
+If successful, you will see each expression found during parsing printed to the console:
+
+    > Task :run
+    [main] INFO example.antlr.Main - Running the example...
+    [main] INFO example.antlr.MyListener - 100+2*6
+    [main] INFO example.antlr.MyListener - 100
+    [main] INFO example.antlr.MyListener - 2*6
+    [main] INFO example.antlr.MyListener - 2
+    [main] INFO example.antlr.MyListener - 6
+    
+## Bugs and Feedback
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/gradle-antlr-example/issues).
 
 ## License
 MIT License
