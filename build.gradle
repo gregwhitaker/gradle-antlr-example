@@ -1,0 +1,42 @@
+plugins {
+    id "idea"
+    id "java"
+    id "application"
+    id "antlr"
+}
+
+group = 'com.github.gregwhitaker'
+version = '0.1.0'
+sourceCompatibility = 1.8
+mainClassName = 'example.antlr.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr 'org.antlr:antlr4:4.5'
+
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+}
+
+// Antlr
+generateGrammarSource {
+    maxHeapSize = "64m"
+    arguments += ["-visitor", "-long-messages"]
+    outputDirectory = file("${rootDir}/src/generated/java")
+}
+
+// Cleanup
+clean {
+    delete file("src/generated/")
+}
+
+// Intellij
+idea {
+    module {
+        sourceDirs += file("src/generated/java")
+        generatedSourceDirs += file("src/generated/java")
+    }
+}
