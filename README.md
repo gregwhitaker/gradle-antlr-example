@@ -1,4 +1,6 @@
 # gradle-antlr-example
+![Build](https://github.com/gregwhitaker/gradle-antlr-example/workflows/Build/badge.svg)
+
 An example of using ANTLR to generate a Parser and Lexer using Gradle.
 
 ## Building the Example
